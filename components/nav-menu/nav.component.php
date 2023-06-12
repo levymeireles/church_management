@@ -2,6 +2,10 @@
 $query = "SELECT * FROM MENUS ORDER BY POSITION ASC";
 $res = mysqli_query($con, $query);
 
+$queryUser = "SELECT * FROM USERS WHERE ID = $_SESSION[ID]";
+$resUser = mysqli_query($con, $queryUser);
+$user = mysqli_fetch_assoc($resUser);
+
 ?>
 
 <!DOCTYPE html>
@@ -15,14 +19,20 @@ $res = mysqli_query($con, $query);
 <body>
     <nav>
         <div class="menu-toggle">&#9776;</div>
-        <ul class="menu">
-            <?php
-            // $menus = array("Home", "Sobre", "Serviços", "Portfólio", "Contato");
-            while ($menu = mysqli_fetch_assoc($res)) {
-                echo "<li><a href='../" . $menu['PATH'] . "'>" . $menu['NAME'] . "</a></li>";
-            }
-            ?>
-        </ul>
+        <div class="div-menu">
+            <ul class="menu">
+                <?php
+                while ($menu = mysqli_fetch_assoc($res)) {
+                    echo "<li><a href='../" . $menu['PATH'] . "'>" . $menu['NAME'] . "</a></li>";
+                }
+                ?>
+            </ul>
+            <div class="div-profile">
+                <?php
+                    echo "<img class='img-profile' src='../../". $user['IMAGE'] ."'/>"
+                ?>
+            </div>
+        </div>
     </nav>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

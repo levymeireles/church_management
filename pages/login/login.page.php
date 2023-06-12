@@ -20,8 +20,8 @@ if (isset($_POST['submit_button'])) {
     }
 }
 
-if(isset($_POST['register_button'])) {
-    header('location:../user/register_user.php');
+if (isset($_POST['register_button'])) {
+    header('location:../user/new_user/new.user.page.php');
 }
 
 ?>
@@ -29,7 +29,7 @@ if(isset($_POST['register_button'])) {
 <html>
 
 <head>
-<title>Aplicação Pessoal</title>
+    <title>Aplicação Pessoal</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="login.style.css">
 </head>
@@ -69,35 +69,5 @@ if(isset($_POST['register_button'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="login.script.js"></script>
 </body>
-
-
-<!-- <body>
-    <h1> Login </h1>
-    <form method="POST" enctype="multipart/form-data">
-        <table>
-
-            <tr>
-                <td>
-                    Username
-                    <input type="text" name="user">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Password
-                    <input type="password" name="pass">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" name="sub" value="Entrar">
-                </td>
-                <td>
-                    <a href="reg.php">Cadastrar</a>
-                </td>
-
-            </tr>
-        </table>
-</body> -->
 
 </html>
