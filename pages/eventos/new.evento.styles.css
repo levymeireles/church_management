@@ -1,0 +1,116 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+.login-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.login-form.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.login-form h2 {
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.login-form.dark-mode h2 {
+    color: #ffffff;
+}
+
+.form-group label {
+    color: #000000;
+}
+
+.form-group.dark-mode label {
+    color: #ffffff;
+}
+
+.form-control {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.form-control.dark-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.btn-primary {
+    background-color: #fcbf2d;
+    border-color: #fcbf2d;
+}
+
+.btn-primary:hover {
+    background-color: #f8a41d;
+    border-color: #f8a41d;
+}
+
+.btn-primary.dark-mode {
+    background-color: #fcbf2d;
+    border-color: #fcbf2d;
+}
+
+.btn-primary.dark-mode:hover {
+    background-color: #f8a41d;
+    border-color: #f8a41d;
+}
+
+.btn-secondary {
+    background-color: #264653;
+    border-color: #264653;
+}
+
+.btn-secondary:hover {
+    background-color: #142127;
+    border-color: #142127;
+}
+
+.btn-secondary.dark-mode {
+    background-color: #264653;
+    border-color: #264653;
+}
+
+.btn-secondary.dark-mode:hover {
+    background-color: #142127;
+    border-color: #142127;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+    display: inline-block;
+    height: 2.5rem;
+}
+
+.theme-toggle input {
+    display: none;
+}
+
+.theme-toggle label {
+    padding: 0.625rem;
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: 1.5rem;
+    background-color: #ccc
+}
+
+.theme-toggle.dark-mode label {
+    background-color: #171717
+}

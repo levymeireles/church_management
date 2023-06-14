@@ -1,5 +1,24 @@
 <?php
 include '../../services/connect.php';
+
+$query = "SELECT M.ID, M.NAME, TIMESTAMPDIFF(YEAR, M.BIRTH_DATE, CURDATE()) AS AGE, M.ADDRESS, M.EMAIL, M.PHONE, MN.NAME AS MINISTRY, FN.NAME AS FUNCTION FROM MEMBERS M
+INNER JOIN MINISTRYS MN ON MN.ID = M.MINISTRY_ID
+INNER JOIN FUNCTIONS FN ON FN.ID = M.FUNCTION_ID
+ORDER BY M.ID;";
+$res = mysqli_query($con, $query);
+$members = array();
+while ($row = mysqli_fetch_array($res)) {
+    $members[] = $row;
+}
+
+if (isset($_POST['new_member'])) {
+    header('location: ./new.member.php');
+}
+
+if (isset($_POST['btn-edit'])) {
+    header('location: ./edit.member.php');
+}
+
 ?>
 
 <!doctype html>
@@ -10,12 +29,61 @@ include '../../services/connect.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Church Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./membros.styles.css" type="text/css">
 </head>
 
 <body>
 
     <?php include '../../components/nav-menu/nav.component.php'; ?>
     <h1>Membros</h1>
+
+    <form method="post">
+        <div class="btn-new-member">
+            <button type="submit" name="new_member" class="btn btn-success btn-block">Criar membro</button>
+        </div>
+    </form>
+
+    <div class="container-table">
+        <form method="post">
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Email</th>
+                        <th>Contato</th>
+                        <th>Ministério</th>
+                        <th>Cargo</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($members as $member) {
+                        echo "
+                    <tr>
+                        <td>" . $member['ID'] . "</td>
+                        <td>" . $member['NAME'] . "</td>
+                        <td>" . $member['AGE'] . "</td>
+                        <td>" . $member['EMAIL'] . "</td>
+                        <td>" . $member['PHONE'] . "</td>
+                        <td>" . $member['MINISTRY'] . "</td>
+                        <td>" . $member['FUNCTION'] . "</td>
+                        <td>
+                            <a href='./edit.membros.php?id=" . $member['ID'] . "' type='submit' class='btn btn-primary btn-sm' name='btn-edit'>Editar</a>
+
+                            <a href='./delete.membros.php?id=" . $member['ID'] . "' type='submit' class='btn btn-danger btn-sm' name='btn-delete'>Deletar</a>
+                        </td>
+                    </tr>
+                    ";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 </body>

@@ -24,7 +24,7 @@ if (isset($_POST['submit_button'])) {
     if (mysqli_num_rows($haveUsername) > 0) {
         $errorMsg = "Usuário já existente";
     }
-    if (mysqli_num_rows($haveUsername) > 0) {
+    if (mysqli_num_rows($haveEmail) > 0) {
 
         $errorMsg = "$errorMsg Email já existente";
     }
@@ -41,6 +41,11 @@ if (isset($_POST['submit_button'])) {
         header('location:../../home/home.php');
     }
 }
+
+if (isset($_POST['back_button'])) {
+    header('location:../../home/home.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,6 +60,11 @@ if (isset($_POST['submit_button'])) {
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+                <form method="post">
+                    <div class="form-group">
+                        <button type="submit" name="back_button" class="btn btn-secondary btn-block">Voltar ao login</button>
+                    </div>
+                </form>
                 <div id="loginForm" class="login-form">
                     <h2 class="text-center">Cadastro</h2>
                     <form method="post" enctype="multipart/form-data">

@@ -29,8 +29,9 @@ $user = mysqli_fetch_assoc($resUser);
             </ul>
             <div class="div-profile">
                 <?php
-                    echo "<img class='img-profile' src='../../". $user['IMAGE'] ."'/>"
+                echo "<img class='img-profile' src='../../" . $user['IMAGE'] . "'/>"
                 ?>
+                <a class='btn btn-danger' href="../../services/logout.php">Sair</a> <br><br>
             </div>
         </div>
     </nav>
